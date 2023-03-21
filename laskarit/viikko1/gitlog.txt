@@ -1,0 +1,113 @@
+commit 966f894c8e7669174946f192d7568b0d72aabf83
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:42:08 2023 +0200
+
+    tiedostoja muutettu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 35fef5bcee3c2b8c59d05e6b48021f49e791688a
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:38:19 2023 +0200
+
+    lisätty tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 6751bcbf1d95afe0237016f30d8ac2e4214de6d5
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:33:33 2023 +0200
+
+    lisäyksiä ja poistoja
+
+ eka.txt    | 3 ++-
+ kolmas.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit ed197628ec37fe00b9d409400636c082e1cbc928
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:29:39 2023 +0200
+
+    tiedsto rename
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ecf2002eeb1811071880aca156ad745f33af8eca
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:25:47 2023 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 42e64fe8f771f3e4dbbec65f9a759023f9b121ff
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:22:10 2023 +0200
+
+    tekstin poisto ja lisäys
+
+ tiedosto.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 5c9811132334312ea81a43a57e7edf843231bf31
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:20:04 2023 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit c95158b44effbf611cfcf7f767ae13dce13bae26
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:14:24 2023 +0200
+
+    lisäys
+
+ stuff/jotain.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8affd7677dfe002f0971b96583e90c8f0226e516
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:07:42 2023 +0200
+
+    toinen ja kolmas muutos
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 6fcdbc837ad3173dcd1def75d746e71a6295b517
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 22:06:16 2023 +0200
+
+    kolmas lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 57c6eb0c52fd3925d156e1dfb9b2d8c262093cd3
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 21:59:13 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 01e453424e73afd227be46cda653271965a490bc
+Author: Elli Johansson <elli.johansson@helsinki.fi>
+Date:   Tue Mar 21 21:52:36 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)

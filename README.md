@@ -1,4 +1,5 @@
 # OT-harjoitustyö
 
 [Requirement Specification](https://github.com/ElliJohansson/ot-harjoitustyo/blob/master/documentation/requirement_specification.md)
+
 [Work Time log](https://github.com/ElliJohansson/ot-harjoitustyo/blob/master/documentation/work_time_log.md)

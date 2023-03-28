@@ -2,4 +2,4 @@
 
 | Date | Time | Tasks |
 | --- | --- | --- |
-| 28.3. |  3  |  Requirement specification   |
+| 28.3. |  2  |  Requirement specification   |

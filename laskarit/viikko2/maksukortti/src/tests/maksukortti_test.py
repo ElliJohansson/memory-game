@@ -25,11 +25,30 @@ class TestMaksukortti(unittest.TestCase):
         self.assertEqual(str(kortti), "Kortilla on rahaa 2.00 euroa")
 
     def test_kortille_voi_ladata_rahaa(self):
-    	self.kortti.lataa_rahaa(2500)
-
-    	self.assertEqual(str(self.kortti), "Kortilla on rahaa 35.00 euroa")
+        self.kortti.lataa_rahaa(2500)
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 35.00 euroa")
 
     def test_kortin_saldo_ei_ylita_maksimiarvoa(self):
-    	self.kortti.lataa_rahaa(20000)
+        self.kortti.lataa_rahaa(20000)
 
-    	self.assertEqual(str(self.kortti), "Kortilla on rahaa 150.00 euroa")
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 150.00 euroa")
+
+    def test_syo_maukkaasti_ei_vie_saldoa_negatiiviseksi(self):
+        kortti = Maksukortti(200)
+        kortti.syo_maukkaasti()
+
+        self.assertEqual(str(kortti), "Kortilla on rahaa 2.00 euroa")
+
+    def test_neg_summa_ei_muuta_saldoa(self):
+        self.kortti.lataa_rahaa(-200)
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 10.00 euroa")
+
+    def test_edullinen_lounas_kun_tasaraha(self):
+        kortti = Maksukortti(250)
+        kortti.syo_edullisesti()
+        self.assertEqual(str(kortti), "Kortilla on rahaa 0.00 euroa")
+
+    def test_maukas_lounas_kun_tasaraha(self):
+        kortti = Maksukortti(400)
+        kortti.syo_maukkaasti()
+        self.assertEqual(str(kortti), "Kortilla on rahaa 0.00 euroa")

@@ -1,4 +1,4 @@
-# OT-harjoitustyö
+# Cat Memory Game
 
 [Requirement Specification](https://github.com/ElliJohansson/memory-game/blob/master/documentation/requirement_specification.md)
 

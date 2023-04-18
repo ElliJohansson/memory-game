@@ -3,3 +3,7 @@
 - added grid generation
 - added images to grid tiles
 - tested right amount of images on grid
+
+## Week 4
+
+- pylint added

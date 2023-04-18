@@ -1,6 +1,6 @@
-import pygame
 import os
 import random
+import pygame
 
 dirname = os.path.dirname(__file__)
 
@@ -14,10 +14,7 @@ def load_images(grid_size):
         file = pygame.image.load(os.path.join(dirname, "pictures", image_name))
         image_list.append(file)
         image_list.append(file)
-    
+
     random.shuffle(image_list)
 
     return image_list
-
-if __name__ == "__main__":
-    print(load_images(3))

@@ -8,6 +8,8 @@
 
 - [Changelog](https://github.com/ElliJohansson/memory-game/blob/master/documentation/changelog.md)  
 
+- [Architecture](https://github.com/ElliJohansson/memory-game/blob/master/documentation/architecture.md)
+
 
 ## Command-line operations
 

@@ -10,6 +10,8 @@
 
 - [Architecture](https://github.com/ElliJohansson/memory-game/blob/master/documentation/architecture.md)
 
+- [Release](https://github.com/ElliJohansson/memory-game/releases/tag/viikko5)
+
 
 ## Command-line operations
 

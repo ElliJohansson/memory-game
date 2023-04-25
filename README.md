@@ -32,3 +32,8 @@ Generate test coverage:
 poetry run invoke coverage-report
 ```
 _The report will be generated in the htmlcov directory._
+
+Run pylint:
+```
+poetry run invoke lint
+``` 

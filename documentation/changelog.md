@@ -2,7 +2,7 @@
 
 - added grid generation
 - added images to grid tiles
-- tested right amount of images on grid
+- tested right amount of tiles on grid
 
 ## Week 4
 
@@ -12,3 +12,4 @@
 
 - the user can flip the images to show the cat pictures
 - refactoring the code (added Tiles and MemoryGame classes)
+- tested right amount of individual images on grid

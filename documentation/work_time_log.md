@@ -9,7 +9,8 @@
 | 22.4. | 5 | refactoring |
 | 24.4. | 4 | refactoring |
 | 25.4. | 6 | refactoring + added user input |
+| 2.5. | 5 | adding more user input |
 
 
-| Total | 27 |
+| Total | 32 |
 | --- | --- |

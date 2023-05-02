@@ -11,7 +11,6 @@ The application is a memory game, where the user has to find matching pictures b
 - the user can determine the difficulty (i.e. same color cats vs. cats in multiple colors)
 - the user can play with or without a timer
 - the user can restart the game
-- the game features a high score board for the quickest completions in different game modes
 
 ## Ideas for future development
 - obstructed cards, which can't be flipped until a condition is met (e.g. enough cards have been turned over)

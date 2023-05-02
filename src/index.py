@@ -2,8 +2,6 @@ import pygame
 from game_loops.memory_game import MemoryGame
 
 
-
-
 def main():
     pygame.init()
 
@@ -11,6 +9,7 @@ def main():
     window_height = 960
     screen = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Cat Memory Game")
+
 
     memory_game = MemoryGame()
 

@@ -13,3 +13,8 @@
 - the user can flip the images to show the cat pictures
 - refactoring the code (added Tiles and MemoryGame classes)
 - tested right amount of individual images on grid
+
+## Week 6
+
+- the tiles flip back if they aren't matching
+- if matching tiles found, they stay picture side up

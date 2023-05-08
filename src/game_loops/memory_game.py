@@ -8,13 +8,14 @@ class MemoryGame:
     def __init__(self):
 
         self.tile_pairs = 6
-        self.FPS = 60
-        self.all_cats = os.listdir(os.path.join(os.getcwd(), "pictures"))
+        self.fps = 60
+        self.all_cats = os.listdir(os.path.join(os.getcwd(), "src/pictures"))
         self.image_width = 150
         self.image_height = 150
         self.borders = 5
         self.tiles_group = pygame.sprite.Group()
 
+        #flipping
         self.flipped = []
         self.block_game = False
         self.frame_count = 1
@@ -24,6 +25,7 @@ class MemoryGame:
         self.cats = self.select_random_cats()
         self.generate_tiles(self.cats)
 
+    #create level
     def generate_tiles(self, cats):
         n = len(cats)
         cols = min(n, 4)
@@ -84,7 +86,7 @@ class MemoryGame:
 
     def handle_block_game(self):
         self.frame_count += 1
-        if self.frame_count == self.FPS:
+        if self.frame_count == self.fps:
             self.frame_count = 0
             self.block_game = False
 

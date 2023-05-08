@@ -10,7 +10,9 @@
 | 24.4. | 4 | refactoring |
 | 25.4. | 6 | refactoring + added user input |
 | 2.5. | 5 | adding more user input |
+| 7.8. | 2 | refactoring |
+| 8.8 | 6 | added docstring, refactoring |
 
 
-| Total | 32 |
+| Total | 40 |
 | --- | --- |

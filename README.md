@@ -5,15 +5,11 @@ The application is a simple memory game where the player is presented with a gri
 ## Documentation
 
 - [Requirement Specification](https://github.com/ElliJohansson/memory-game/blob/master/documentation/requirement_specification.md)
-
 - [Instructions](https://github.com/ElliJohansson/memory-game/blob/master/documentation/instructions.md)
-
 - [Work Time log](https://github.com/ElliJohansson/memory-game/blob/master/documentation/work_time_log.md)
-
 - [Changelog](https://github.com/ElliJohansson/memory-game/blob/master/documentation/changelog.md)  
-
 - [Architecture](https://github.com/ElliJohansson/memory-game/blob/master/documentation/architecture.md)
-
+- [Testing document](https://github.com/ElliJohansson/memory-game/blob/master/documentation/testing_document.md)
 - [Release](https://github.com/ElliJohansson/memory-game/releases/tag/viikko5)
 
 

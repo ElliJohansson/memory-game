@@ -1,5 +1,7 @@
 # Cat Memory Game
 
+The application is a simple memory game where the player is presented with a grid of cards. The objective of the game is to flip over pairs of cards and match them to reveal their images.
+
 ## Documentation
 
 - [Requirement Specification](https://github.com/ElliJohansson/memory-game/blob/master/documentation/requirement_specification.md)

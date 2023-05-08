@@ -5,8 +5,8 @@ from game_loops.memory_game import MemoryGame
 def main():
     pygame.init()
 
-    window_width = 1280
-    window_height = 960
+    window_width = 800
+    window_height = 600
     screen = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Cat Memory Game")
 

@@ -170,16 +170,4 @@ class MemoryGame:
         num_shown_tiles = sum(tile.shown for tile in self.tiles_group)
         return num_shown_tiles == len(self.tiles_group)
 
-    
-    def update_file(self):
-        f = open("scores.txt", "r")
-        file = f.readlines()
-        last_score = int(file[0])
 
-        if last_score > int(self.score):
-            f.close()
-            file = open("scores.txt", "w")
-            file.write(str(self.score))
-            file.close()
-
-            

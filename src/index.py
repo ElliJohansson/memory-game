@@ -11,7 +11,7 @@ def main():
     screen = pygame.display.set_mode((window_width, window_height))
 
     game = GameLoop(screen)
-    game.run()
+    game.menu()
 
 
 if __name__ == "__main__":

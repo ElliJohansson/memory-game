@@ -12,7 +12,7 @@ class Buttons():
         self.text_surface = self.font.render(text, True, self.text_color)
         self.text_width, self.text_heigth = self.font.size(text)
 
-        self.rect_color = (255, 255, 0)
+        self.rect_color = (255, 255, 255)
         self.rect_width = self.text_width + 20
         self.rect_heigth = self.text_heigth + 20
 

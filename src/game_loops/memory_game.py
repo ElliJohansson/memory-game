@@ -9,6 +9,7 @@ class MemoryGame:
         
         self.tile_pairs = 6
         self.fps = 60
+        self.score = 0
 
         #timer
         self.start_time = pygame.time.get_ticks()
@@ -58,20 +59,21 @@ class MemoryGame:
     def select_random_cats(self):
         """Selects a number of random pictures to use as the tiles 
         and multiplies it with two so there are matching pairs.
-        """
+        Returns:
+            A list of random cat pictures in a random order.
+            """
         cats = random.sample(self.all_cats, self.tile_pairs)
         cats *= 2
         random.shuffle(cats)
         return cats
     
     def timer(self, screen):
-        """timer blablablabla sjaspoasj onwajd
+        """Checks if timer is running and stops the time if it's not. 
+        Stops the time is level is completed.
+        Shows the timer on screen.
+        Args:
+            screen: display of the application
         """
-        #timer_on_img = pygame.image.load("src/pictures/icons/timer.png").convert_alpha()
-        #timer_off_img = pygame.image.load("src/pictures/icons/timeroff.png").convert_alpha()
-        #timer_toggle = timer_on_img
-        #timer_toggle_rect = timer_toggle.get_rect(topright = (590, 10))
-
 
         if self.timer_running:
             elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
@@ -81,26 +83,25 @@ class MemoryGame:
         if self.check_level_completion():
             if self.timer_running:
                 self.saved_time = pygame.time.get_ticks() - self.start_time
+                self.score = self.saved_time
                 self.timer_running = False
 
         timer_text = pygame.font.SysFont("gentium", 30).render(f"TIME: {elapsed_time}", True, (0,0,0))
         screen.blit(timer_text, (650,10))
-        #screen.blit(timer_toggle, timer_toggle_rect)
 
     def update(self, events, screen):
         """Args:
             events: list of events
-            screen: screen of application
+            screen: display of application
         """
         self.user_input(events)
         self.draw(screen)
-        #if self.timer_running:
         self.timer(screen)
 
     def draw(self, screen):
         """Draws the tiles on a white screen.
         Args:
-            screen: screen of the application
+            screen: display of the application
         """
         screen.fill((255, 255, 255))
 
@@ -133,7 +134,7 @@ class MemoryGame:
     def handle_tile_click(self, tile):
         """Shows clicked tile and checks if it is the second flipped tile.
         Args: 
-            tile: tile containing a picture of a cat
+            tile: game tile containing a picture of a cat
         """
         self.flipped.append(tile.name)
         tile.show()
@@ -170,3 +171,15 @@ class MemoryGame:
         return num_shown_tiles == len(self.tiles_group)
 
     
+    def update_file(self):
+        f = open("scores.txt", "r")
+        file = f.readlines()
+        last_score = int(file[0])
+
+        if last_score > int(self.score):
+            f.close()
+            file = open("scores.txt", "w")
+            file.write(str(self.score))
+            file.close()
+
+            

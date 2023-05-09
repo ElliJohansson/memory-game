@@ -14,16 +14,22 @@ class GameLoop():
         self.screen.blit(img, (x, y))
 
 
-    def run(self):
+    def menu(self):
         pygame.display.set_caption("Menu")
 
         while self.running:
+
             self.screen.fill((255,255,255))
+            pos = pygame.mouse.get_pos()
+
             play_button = Buttons(self.screen, "PLAY", 350, 100)
             play_button.draw_rect()
 
             exit_button = Buttons(self.screen, "EXIT", 350, 400)
             exit_button.draw_rect()
+
+            score_button = Buttons(self.screen, "SCORES", 330, 250)
+            score_button.draw_rect()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -31,10 +37,10 @@ class GameLoop():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if play_button.rect.collidepoint(pos):
                         self.play()
+                    if score_button.rect.collidepoint(pos):
+                        self.scores()
                     if exit_button.rect.collidepoint(pos):
                         self.running = False
-
-            pos = pygame.mouse.get_pos()
 
             pygame.display.update()
 
@@ -44,17 +50,42 @@ class GameLoop():
         memory_game = MemoryGame()
 
         while self.running:
+
+            pos = pygame.mouse.get_pos()            
             events = pygame.event.get()
+
+            back_button = Buttons(self.screen, "<-BACK", 30, 500)
+            back_button.draw_rect()
+
             for event in events:
                 if event.type == pygame.QUIT:
                     self.running = False
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    if self.timer_running:
-                        self.saved_time = pygame.time.get_ticks() - self.start_time
-                        self.timer_running = False
-
-            memory_game.update(events, self.screen)
+                if event.type == pygame.MOUSEBUTTONDOWN: 
+                    if back_button.rect.collidepoint(pos):
+                        self.menu()
+                        
             pygame.display.update()
+            memory_game.update(events, self.screen)
 
 
+
+    def scores(self):
+
+        pygame.display.set_caption("Scores")
+
+        while self.running:
+
+            self.screen.fill((255,255,255))
+            pos = pygame.mouse.get_pos()
+
+            back_button = Buttons(self.screen, "<-BACK", 30, 500)
+            back_button.draw_rect()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if back_button.rect.collidepoint(pos):
+                        self.menu()
+
+            pygame.display.update()

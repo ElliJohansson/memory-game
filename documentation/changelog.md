@@ -18,3 +18,9 @@
 
 - the tiles flip back if they aren't matching
 - if matching tiles found, they stay picture side up
+
+## Week 7
+
+- added user interface (menu)
+- added Buttons class, that creates menu buttons
+- added GameLoop class, which contains main game loop

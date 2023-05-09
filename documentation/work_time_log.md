@@ -12,7 +12,7 @@
 | 2.5. | 5 | adding more user input |
 | 7.8. | 2 | refactoring |
 | 8.8 | 6 | added docstring, refactoring |
+| 9.8. | 7 | added timer and user interface |
 
-
-| Total | 40 |
+| Total | 47 |
 | --- | --- |

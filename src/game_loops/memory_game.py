@@ -6,12 +6,18 @@ from sprites.tiles import Tiles
 
 class MemoryGame:
     def __init__(self):
-
+        
         self.tile_pairs = 6
         self.fps = 60
 
+        #timer
+        self.start_time = pygame.time.get_ticks()
+        self.timer_running = True
+        self.saved_time = 0
+
+
         #getting the cat pictures
-        self.all_cats = os.listdir(os.path.join(os.getcwd(), "src/pictures"))
+        self.all_cats = os.listdir(os.path.join(os.getcwd(), "src/pictures/cats"))
         self.image_width = 150
         self.image_height = 150
         self.borders = 5
@@ -24,17 +30,20 @@ class MemoryGame:
         self.create_grid()
 
     def create_grid(self):
-        #Creates the grid with cat picture tiles.
+        """Creates the grid with cat picture tiles.
+        """
         self.cats = self.select_random_cats()
         self.generate_tiles(self.cats)
 
     def generate_tiles(self, cats):
-        #Creates the level of the game.
+        """Creates the level of the game, e.g. how many rows and
+        columns of tiles there are.
+        """
         n = len(cats)
         cols = min(n, 4)
         rows = (n + cols - 1) // cols
 
-        self.tiles_group.empty()
+        #self.tiles_group.empty()
 
         for row in range(rows):
             for col in range(cols):
@@ -54,22 +63,61 @@ class MemoryGame:
         cats *= 2
         random.shuffle(cats)
         return cats
+    
+    def timer(self, screen):
+        """timer blablablabla sjaspoasj onwajd
+        """
+        #timer_on_img = pygame.image.load("src/pictures/icons/timer.png").convert_alpha()
+        #timer_off_img = pygame.image.load("src/pictures/icons/timeroff.png").convert_alpha()
+        #timer_toggle = timer_on_img
+        #timer_toggle_rect = timer_toggle.get_rect(topright = (590, 10))
+
+
+        if self.timer_running:
+            elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
+        else:
+            elapsed_time = self.saved_time // 1000
+        
+        if self.check_level_completion():
+            if self.timer_running:
+                self.saved_time = pygame.time.get_ticks() - self.start_time
+                self.timer_running = False
+
+        timer_text = pygame.font.SysFont("gentium", 30).render(f"TIME: {elapsed_time}", True, (0,0,0))
+        screen.blit(timer_text, (650,10))
+        #screen.blit(timer_toggle, timer_toggle_rect)
 
     def update(self, events, screen):
+        """Args:
+            events: list of events
+            screen: screen of application
+        """
         self.user_input(events)
         self.draw(screen)
+        #if self.timer_running:
+        self.timer(screen)
 
     def draw(self, screen):
+        """Draws the tiles on a white screen.
+        Args:
+            screen: screen of the application
+        """
         screen.fill((255, 255, 255))
 
         self.tiles_group.draw(screen)
         self.tiles_group.update()
 
     def user_input(self, events):
+        """Checks if game is blocked and forwards the actions to
+        the appropriate method.
+        Args:
+            events: list of events
+        """
         if not self.block_game:
             self.handle_mouse_clicks(events)
         else:
             self.handle_block_game()
+
 
     def handle_mouse_clicks(self, events):
         """Checks if user has clicked on the tiles.
@@ -112,5 +160,13 @@ class MemoryGame:
                 if tile.name in self.flipped:
                     tile.hide()
             self.flipped = []
+
+    def check_level_completion(self):
+        """Checks if the level is completed, i.e. all tiles are shown.
+        Returns:
+            True if the level is completed, otherwise False.
+        """
+        num_shown_tiles = sum(tile.shown for tile in self.tiles_group)
+        return num_shown_tiles == len(self.tiles_group)
 
     

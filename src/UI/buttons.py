@@ -1,9 +1,9 @@
 import pygame
 
 class Buttons():
-    def __init__(self, screen, text, x, y):
+    def __init__(self, screen, text, size, x, y):
         
-        self.font = pygame.font.SysFont("gentium", 40)
+        self.font = pygame.font.SysFont("gentium", size)
         self.text_color = ((0,0,0))
 
         self.text = text

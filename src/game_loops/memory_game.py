@@ -1,30 +1,31 @@
 import os
 import random
+import pickle
 import pygame
 from sprites.tiles import Tiles
 
-
 class MemoryGame:
     def __init__(self):
-        
+
         self.tile_pairs = 6
         self.fps = 60
-        self.score = 0
+        self.saved_scores = []
+        self.matched = []
 
-        #timer
+        # timer
         self.start_time = pygame.time.get_ticks()
         self.timer_running = True
         self.saved_time = 0
 
-
-        #getting the cat pictures
-        self.all_cats = os.listdir(os.path.join(os.getcwd(), "src/pictures/cats"))
+        # getting the cat pictures
+        self.all_cats = os.listdir(os.path.join(
+            os.getcwd(), "src/pictures/cats"))
         self.image_width = 150
         self.image_height = 150
         self.borders = 5
         self.tiles_group = pygame.sprite.Group()
 
-        #flipping and timing
+        # flipping and timing
         self.flipped = []
         self.block_game = False
         self.frame_count = 1
@@ -44,7 +45,7 @@ class MemoryGame:
         cols = min(n, 4)
         rows = (n + cols - 1) // cols
 
-        #self.tiles_group.empty()
+        # self.tiles_group.empty()
 
         for row in range(rows):
             for col in range(cols):
@@ -66,7 +67,7 @@ class MemoryGame:
         cats *= 2
         random.shuffle(cats)
         return cats
-    
+
     def timer(self, screen):
         """Checks if timer is running and stops the time if it's not. 
         Stops the time is level is completed.
@@ -79,15 +80,18 @@ class MemoryGame:
             elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
         else:
             elapsed_time = self.saved_time // 1000
-        
+
         if self.check_level_completion():
             if self.timer_running:
                 self.saved_time = pygame.time.get_ticks() - self.start_time
-                self.score = self.saved_time
+                #self.saved_scores.append(self.saved_time//1000)
+
+                #self.save_scores()
                 self.timer_running = False
 
-        timer_text = pygame.font.SysFont("gentium", 30).render(f"TIME: {elapsed_time}", True, (0,0,0))
-        screen.blit(timer_text, (650,10))
+        timer_text = pygame.font.SysFont("gentium", 30).render(
+            f"TIME: {elapsed_time}", True, (0, 0, 0))
+        screen.blit(timer_text, (650, 10))
 
     def update(self, events, screen):
         """Args:
@@ -97,6 +101,7 @@ class MemoryGame:
         self.user_input(events)
         self.draw(screen)
         self.timer(screen)
+        self.level_completion(screen)
 
     def draw(self, screen):
         """Draws the tiles on a white screen.
@@ -119,7 +124,6 @@ class MemoryGame:
         else:
             self.handle_block_game()
 
-
     def handle_mouse_clicks(self, events):
         """Checks if user has clicked on the tiles.
         Args:
@@ -136,10 +140,13 @@ class MemoryGame:
         Args: 
             tile: game tile containing a picture of a cat
         """
-        self.flipped.append(tile.name)
-        tile.show()
-        if len(self.flipped) == 2:
-            self.handle_tile_pair()
+        if tile.name not in self.matched:
+            self.flipped.append(tile.name)
+            tile.show()
+            if len(self.flipped) == 2:
+                self.handle_tile_pair()
+        else:
+            pass
 
     def handle_tile_pair(self):
         """Blocks the game if the flipped tiles aren't matching.
@@ -147,6 +154,9 @@ class MemoryGame:
         if self.flipped[0] != self.flipped[1]:
             self.block_game = True
         else:
+            for tile in self.tiles_group:
+                if tile.name == self.flipped[0]:
+                    self.matched.append(tile.name)
             self.flipped = []
 
     def handle_block_game(self):
@@ -170,4 +180,18 @@ class MemoryGame:
         num_shown_tiles = sum(tile.shown for tile in self.tiles_group)
         return num_shown_tiles == len(self.tiles_group)
 
+    def level_completion(self, screen):
+        """Displays a message after the level is completed.
+        """
+        completion_text = pygame.font.SysFont(
+            "gentium", 30).render("Congrats!", True, (0, 0, 0))
 
+        if self.check_level_completion():
+            screen.blit(completion_text, (300, 500))
+
+    #def save_scores(self):
+        """Saves the score (how much time used to complete level)
+        """
+
+        #with open("score.dat", "wb") as file:
+        #    pickle.dump(self.saved_scores, file)

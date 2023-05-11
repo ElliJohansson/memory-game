@@ -1,6 +1,8 @@
 import pygame
 
 class Buttons():
+    """Class to make the clickable buttons in the UI.
+    """
     def __init__(self, screen, text, size, x, y):
         
         self.font = pygame.font.SysFont("gentium", size)
@@ -12,7 +14,7 @@ class Buttons():
         self.text_surface = self.font.render(text, True, self.text_color)
         self.text_width, self.text_heigth = self.font.size(text)
 
-        self.rect_color = (255, 255, 255)
+        self.rect_color = (249, 230, 230)
         self.rect_width = self.text_width + 20
         self.rect_heigth = self.text_heigth + 20
 

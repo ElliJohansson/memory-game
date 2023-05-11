@@ -3,7 +3,7 @@ from load_image import load_image
 
 
 class Tiles(pygame.sprite.Sprite):
-    def __init__(self, filename, x, y):
+    def __init__(self, filename, x, y, id):
         """Args:
             filename: name of the file with a cat picture
             x: width of the cat picture
@@ -20,6 +20,7 @@ class Tiles(pygame.sprite.Sprite):
         self.image = self.flipped_image
         self.rect = self.image.get_rect(topleft=(x, y))
         self.shown = False
+        self.id = id
 
     def update(self):
         """Changes the image to a picture of a cat or a black square (tile's backside)

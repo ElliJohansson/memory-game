@@ -3,19 +3,19 @@ import random
 import pickle
 import pygame
 from sprites.tiles import Tiles
+from game_logic.timer import Timer
 
 class MemoryGame:
+    """A class that contains the main game and it's logic.
+    """
     def __init__(self):
 
         self.tile_pairs = 6
         self.fps = 60
-        self.saved_scores = []
+        self.saved_score = 0
         self.matched = []
 
-        # timer
-        self.start_time = pygame.time.get_ticks()
-        self.timer_running = True
-        self.saved_time = 0
+        self.timer = Timer()
 
         # getting the cat pictures
         self.all_cats = os.listdir(os.path.join(
@@ -54,7 +54,7 @@ class MemoryGame:
                     break
                 x = col * (self.image_width + self.borders)
                 y = row * (self.image_height + self.borders)
-                tile = Tiles(cats[i], x, y)
+                tile = Tiles(cats[i], x, y, i)
                 self.tiles_group.add(tile)
 
     def select_random_cats(self):
@@ -68,30 +68,16 @@ class MemoryGame:
         random.shuffle(cats)
         return cats
 
-    def timer(self, screen):
-        """Checks if timer is running and stops the time if it's not. 
-        Stops the time is level is completed.
-        Shows the timer on screen.
-        Args:
-            screen: display of the application
+
+    def stop_timer(self):
+        """Stops the timer and saves the time (score) in a variable.
         """
-
-        if self.timer_running:
-            elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
-        else:
-            elapsed_time = self.saved_time // 1000
-
         if self.check_level_completion():
-            if self.timer_running:
-                self.saved_time = pygame.time.get_ticks() - self.start_time
-                #self.saved_scores.append(self.saved_time//1000)
-
-                #self.save_scores()
-                self.timer_running = False
-
-        timer_text = pygame.font.SysFont("gentium", 30).render(
-            f"TIME: {elapsed_time}", True, (0, 0, 0))
-        screen.blit(timer_text, (650, 10))
+            if self.timer.timer_running:
+                self.timer.saved_time = pygame.time.get_ticks() - self.timer.start_time
+                self.saved_score = (self.timer.saved_time//1000)
+                self.timer.timer_running = False  
+            
 
     def update(self, events, screen):
         """Args:
@@ -100,7 +86,8 @@ class MemoryGame:
         """
         self.user_input(events)
         self.draw(screen)
-        self.timer(screen)
+        self.timer.update(screen)
+        self.stop_timer()
         self.level_completion(screen)
 
     def draw(self, screen):
@@ -141,7 +128,7 @@ class MemoryGame:
             tile: game tile containing a picture of a cat
         """
         if tile.name not in self.matched:
-            self.flipped.append(tile.name)
+            self.flipped.append(tile)
             tile.show()
             if len(self.flipped) == 2:
                 self.handle_tile_pair()
@@ -151,11 +138,11 @@ class MemoryGame:
     def handle_tile_pair(self):
         """Blocks the game if the flipped tiles aren't matching.
         """
-        if self.flipped[0] != self.flipped[1]:
+        if self.flipped[0].name != self.flipped[1].name or self.flipped[0].id == self.flipped[1].id:
             self.block_game = True
         else:
             for tile in self.tiles_group:
-                if tile.name == self.flipped[0]:
+                if tile.name == self.flipped[0].name:
                     self.matched.append(tile.name)
             self.flipped = []
 
@@ -168,7 +155,7 @@ class MemoryGame:
             self.block_game = False
 
             for tile in self.tiles_group:
-                if tile.name in self.flipped:
+                if tile in self.flipped:
                     tile.hide()
             self.flipped = []
 
@@ -188,10 +175,3 @@ class MemoryGame:
 
         if self.check_level_completion():
             screen.blit(completion_text, (300, 500))
-
-    #def save_scores(self):
-        """Saves the score (how much time used to complete level)
-        """
-
-        #with open("score.dat", "wb") as file:
-        #    pickle.dump(self.saved_scores, file)

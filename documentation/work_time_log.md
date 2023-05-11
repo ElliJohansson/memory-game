@@ -9,11 +9,13 @@
 | 22.4. | 5 | refactoring |
 | 24.4. | 4 | refactoring |
 | 25.4. | 6 | refactoring + added user input |
-| 2.5. | 5 | adding more user input |
+| 2.5. | 5 | added more user input |
 | 7.5. | 2 | refactoring |
 | 8.5 | 6 | added docstring, refactoring |
 | 9.5. | 7 | added timer and user interface |
 | 10.5. | 4 | debugging |
+| 11.5. | 4 | added score system + debugging |
 
-| Total | 51 |
+| Total | 55 |
 | --- | --- |
+

@@ -24,3 +24,4 @@
 - added user interface (menu)
 - added Buttons class, that creates menu buttons
 - added GameLoop class, which contains main game loop
+- moved Timer to be it's own class

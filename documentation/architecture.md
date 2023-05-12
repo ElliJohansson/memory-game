@@ -8,4 +8,4 @@
 
 Saving the socre locally in a .dat file using pickle:
 
-![score_diagram](https://github.com/ElliJohansson/memory-game/blob/master/documentation/images/score%20diagram.png)
+![score_diagram](https://github.com/ElliJohansson/memory-game/blob/master/documentation/images/score_diagram.png)

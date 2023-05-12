@@ -1,13 +1,14 @@
 import os
 import random
-import pickle
 import pygame
 from sprites.tiles import Tiles
 from game_logic.timer import Timer
 
+
 class MemoryGame:
     """A class that contains the main game and it's logic.
     """
+
     def __init__(self):
 
         self.tile_pairs = 6
@@ -68,7 +69,6 @@ class MemoryGame:
         random.shuffle(cats)
         return cats
 
-
     def stop_timer(self):
         """Stops the timer and saves the time (score) in a variable.
         """
@@ -76,8 +76,7 @@ class MemoryGame:
             if self.timer.timer_running:
                 self.timer.saved_time = pygame.time.get_ticks() - self.timer.start_time
                 self.saved_score = (self.timer.saved_time//1000)
-                self.timer.timer_running = False  
-            
+                self.timer.timer_running = False
 
     def update(self, events, screen):
         """Args:

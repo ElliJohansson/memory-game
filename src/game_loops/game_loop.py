@@ -9,11 +9,6 @@ class GameLoop():
         self.screen = screen
         self.running = True
         self.saved_scores = []
-        # self.memory_game = MemoryGame()
-
-    #def draw_text(self, text, font, text_color, x, y):
-    #    img = font.render(text, True, text_color)
-    #    self.screen.blit(img, (x, y))
 
     def menu(self):
         """Main menu of the game. The user can enter the game page or 

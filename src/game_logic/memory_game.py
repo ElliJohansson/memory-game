@@ -86,18 +86,19 @@ class MemoryGame:
         """
         self.user_input(events)
         self.draw(screen)
-        self.timer.update(screen)
+        self.timer.update()
         self.stop_timer()
         self.level_completion(screen)
 
     def draw(self, screen):
-        """Draws the tiles on a white screen.
+        """Draws the tiles and timer on a white screen.
         Args:
             screen: display of the application
         """
         screen.fill((255, 255, 255))
 
         self.tiles_group.draw(screen)
+        screen.blit(self.timer.draw_timer(), (650, 10))
         self.tiles_group.update()
 
     def user_input(self, events):
@@ -132,8 +133,6 @@ class MemoryGame:
             tile.show()
             if len(self.flipped) == 2:
                 self.handle_tile_pair()
-        else:
-            pass
 
     def handle_tile_pair(self):
         """Blocks the game if the flipped tiles aren't matching.

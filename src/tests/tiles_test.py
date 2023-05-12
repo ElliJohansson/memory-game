@@ -1,7 +1,7 @@
 import unittest
-from game_loops.memory_game import MemoryGame
+from game_logic.memory_game import MemoryGame
 
-class TestCreateGrid(unittest.TestCase):
+class TestTiles(unittest.TestCase):
 
     def setUp(self):
         self.memory_game = MemoryGame()

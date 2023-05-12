@@ -1,5 +1,5 @@
-import pygame
 import pickle
+import pygame
 from game_logic.memory_game import MemoryGame
 from UI.buttons import Buttons
 

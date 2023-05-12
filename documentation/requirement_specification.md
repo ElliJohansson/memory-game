@@ -3,13 +3,11 @@
 ## Purpose of the application
 
 The application is a memory game, where the user has to find matching pictures by turning them over. The game features pictures of cats.
- 
 
 ## Functionality
 
-- the user can choose the size of the grid layout of the game (small, medium, large)
-- the user can determine the difficulty (i.e. same color cats vs. cats in multiple colors)
-- the user can play with or without a timer
+- the user can enter the game from the menu screen
+- the user can see the locally saved high scores
 - the user can restart the game
 
 ## Ideas for future development

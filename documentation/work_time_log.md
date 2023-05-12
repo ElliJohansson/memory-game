@@ -15,7 +15,8 @@
 | 9.5. | 7 | added timer and user interface |
 | 10.5. | 4 | debugging |
 | 11.5. | 4 | added score system + debugging |
+| 12.5. | 3 | added tests |
 
-| Total | 55 |
+| Total | 58 |
 | --- | --- |
 

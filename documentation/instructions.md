@@ -15,4 +15,6 @@ poetry run invoke start
 
 ## User instructions
 
-![user_instructions1](https://github.com/ElliJohansson/memory-game/blob/master/documentation/images/userinstruction1.png)
+The application opens with a view of the menu:
+
+

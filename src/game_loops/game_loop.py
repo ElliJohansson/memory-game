@@ -5,10 +5,18 @@ from UI.buttons import Buttons
 
 
 class GameLoop():
+    """Class that contains the menu, play and score screen game loops
+
+    Attributes:
+        screen: display of application
+    """
+
     def __init__(self, screen):
         self.screen = screen
         self.running = True
         self.saved_scores = []
+
+        self.background = pygame.image.load("src/pictures/background.png")
 
     def menu(self):
         """Main menu of the game. The user can enter the game page or 
@@ -19,6 +27,7 @@ class GameLoop():
         while self.running:
 
             self.screen.fill((255, 255, 255))
+            self.screen.blit(self.background, (0, 0))
             pos = pygame.mouse.get_pos()
 
             play_button = Buttons(self.screen, "PLAY", 40, 350, 100)
@@ -45,6 +54,7 @@ class GameLoop():
 
     def play(self):
         """Game loop for the actual memory game.
+        Save valid scores from played games.
         """
         pygame.display.set_caption("Cat Memory Game")
         memory_game = MemoryGame()
@@ -71,17 +81,15 @@ class GameLoop():
 
             pygame.display.update()
             memory_game.update(events, self.screen)
-            
+
             if memory_game.saved_score != 0 and memory_game.saved_score not in self.saved_scores:
                 self.saved_scores.append(memory_game.saved_score)
 
                 with open("score.dat", "wb") as file:
                     pickle.dump(self.saved_scores, file)
 
-
-
     def scores(self):
-        """Game loop for the score page.
+        """Game loop for the score page. Load scores from a file.
         """
         pygame.display.set_caption("Scores")
 
@@ -96,6 +104,7 @@ class GameLoop():
         while self.running:
 
             self.screen.fill((255, 255, 255))
+            self.screen.blit(self.background, (0, 0))
             pos = pygame.mouse.get_pos()
 
             back_button = Buttons(self.screen, "<-BACK", 20, 5, 550)
@@ -103,12 +112,13 @@ class GameLoop():
 
             score_str = "Scores"
             score_text = pygame.font.SysFont(
-                "gentium", 30).render(score_str, True, (0, 0, 0))
-            self.screen.blit(score_text, (350, 300))
+                "gentium", 50).render(score_str, True, (0, 0, 0))
+            self.screen.blit(score_text, (335, 100))
 
-            y = 350
+            y = 200
             for i, score in enumerate(self.saved_scores[:5]):
-                score_text = pygame.font.SysFont("gentium", 30).render(f"{i+1}. {score}", True, (0, 0, 0))
+                score_text = pygame.font.SysFont("gentium", 40).render(
+                    f"{i+1}. {score} s", True, (0, 0, 0))
                 self.screen.blit(score_text, (350, y))
                 y += 40
 

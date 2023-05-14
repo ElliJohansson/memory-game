@@ -16,7 +16,9 @@
 | 10.5. | 4 | debugging |
 | 11.5. | 4 | added score system + debugging |
 | 12.5. | 3 | added tests |
+| 13.5. | 4 | documenting |
+| 14.5. | 3 | final checks and documenting |
 
-| Total | 58 |
+| Total | 65 |
 | --- | --- |
 

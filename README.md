@@ -10,6 +10,7 @@ The application is a simple memory game where the player is presented with a gri
 - [Changelog](https://github.com/ElliJohansson/memory-game/blob/master/documentation/changelog.md)  
 - [Architecture](https://github.com/ElliJohansson/memory-game/blob/master/documentation/architecture.md)
 - [Testing document](https://github.com/ElliJohansson/memory-game/blob/master/documentation/testing_document.md)
+- [References](https://github.com/ElliJohansson/memory-game/blob/master/documentation/references.md)
 - [Release](https://github.com/ElliJohansson/memory-game/releases/tag/viikko5)
 
 
